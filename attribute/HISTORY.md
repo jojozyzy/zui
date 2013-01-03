@@ -7,6 +7,7 @@ HISTORY
    * Build Tag: ?
    * tested, works with YUI 3.8.0
    * Migrate to yogi, move to zui repo.
+   * fix for YUI 3.8.0
 
 2012-08-28
 ----------
