@@ -4,8 +4,7 @@
         "gallery-zui-attribute": {
             "jsfiles": [
                 "zui-attribute.js"
-            ],
-            "meta": {}
+            ]
         }
     }
 }
