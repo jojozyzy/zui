@@ -9,7 +9,8 @@
  * A augmentable implementation for Attribute, providing extended
  * methods for Attribute management such as toggle() and set_again()   
  *
- * @class ZAttribute
+ * @namespace zui
+ * @class Attribute
 */
 function ZAttribute() {}
 

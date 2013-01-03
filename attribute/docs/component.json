@@ -1,11 +1,8 @@
 {
     "name"       : "gallery-zui-attribute",
     "displayName": "Gallery: zui-attribute",
-    "description": "ZUI attribute provides revert() , toggle() , set_again(), sync(), unsync() methods for Attribute.
-",
+    "description": "ZUI attribute provides revert() , toggle() , set_again(), sync(), unsync() methods for Attribute.",
     "author"     : [ "zordius" ],
 
-    "tags": [ "gallery" ],
-
-    "examples": []
+    "tags": ["unsync", "revert", "set_again", "zordius", "attribute", "toggle", "sync", "change event"]
 }
