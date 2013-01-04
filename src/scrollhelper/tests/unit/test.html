@@ -6,13 +6,15 @@
  <meta name="apple-mobile-web-app-capable" content="yes">
  <meta name="apple-mobile-web-app-status-bar-style" content="black">
  <meta name="format-detection" content="telephone=no">
- <title>Test ZUI RAScroll</title>
+ <title>Test ZUI ScrollHelper</title>
 <style>
 img {width:400px;height:200px}
+.yui3-scrollview {border:1px solid #f00}
 </style>
 </head>
 <body class="yui3-skin-sam">
 <div id="scroll1">
+ <h1>This scrollview can not be dragged on img</h1>
  <div>
   test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
   test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
@@ -27,8 +29,6 @@ img {width:400px;height:200px}
   test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
   test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
   test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  <div id="scroll2">
-   <div style="width:1000px">
     test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
   test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
     test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -37,36 +37,6 @@ img {width:400px;height:200px}
     test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
     test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
   <img src="http://lorempixel.com/400/200/" />
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-    test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-   </div>
-  </div>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
-  test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
   test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
   <img src="http://lorempixel.com/400/200/" />
   test content with a b c d e f g h i j k l <a href="http://yahoo.com">Yahoo!</a></br>
@@ -81,8 +51,11 @@ img {width:400px;height:200px}
   test content with a b c d e f g h i j k l</br>
   test content with a b c d e f g h i j k l</br>
   test content with a b c d e f g h i j k l</br>
-  <div id="scroll3">
-   <div style="width:1000px">
+ </div>
+</div>
+<div id="scroll2">
+ <h1>This scrollview can be dragged on img (with scrollHelper)</h1>
+ <div>
     test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
     test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
     test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -106,8 +79,6 @@ img {width:400px;height:200px}
     test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
     test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
     test content with a b c d e f g h i j k l m n o p q r s t u v w x y z
-   </div>
-  </div>
   test content with a b c d e f g h i j k l</br>
   test content with a b c d e f g h i j k l</br>
   test content with a b c d e f g h i j k l</br>
@@ -128,17 +99,62 @@ img {width:400px;height:200px}
  </div>
 </div>
 </body>
-<script src="http://yui.yahooapis.com/3.7.2/build/yui/yui-min.js"></script>
-<script type="text/javascript" src="../../../build/gallery-zui-scrollhelper/gallery-zui-scrollhelper-debug.js"></script> 
+<script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-debug.js"></script>
+<script type="text/javascript" src="../../build/gallery-zui-scrollhelper/gallery-zui-scrollhelper-debug.js"></script> 
 <script>
-YUI().use('gallery-zui-scrollhelper', function (Y) {
-    var scroll3 = new Y.ScrollView({srcNode: '#scroll3', width:400, render: true}),
-        scroll2 = new Y.ScrollView({srcNode: '#scroll2', width:400, render: true}),
-        scroll1 = new Y.ScrollView({srcNode: '#scroll1', height: 500, width: 400, render: true});
+YUI({
+    coverage: ['gallery-zui-scrollhelper'],
+    filter: (window.location.search.match(/[?&]filter=([^&]+)/) || [])[1] || 'raw'
+}).use('test', 'node-event-simulate', 'gallery-zui-scrollhelper', function (Y) {
+    var scroll2 = (new Y.ScrollView({srcNode: '#scroll2', height: 300, width:400, render: true})).plug(Y.zui.ScrollHelper),
+        scroll1 = new Y.ScrollView({srcNode: '#scroll1', height: 300, width: 400, render: true}),
+        testSuite = new Y.Test.Suite('ZUI scrollhelper'),
+        dragDelay = 400,
+        testDelay = 100,
 
-    scroll3.plug(Y.zui.ScrollHelper);
-    scroll2.plug(Y.zui.ScrollHelper);
-    console.log('ready to test!');
+        doDrag = function (widget, down, y, ms) {
+            var node = widget.get('contentBox'),
+                isObj = Y.Lang.isString(down),
+                downObj = isObj ? node.one(down) : node,
+                xy = Y.Lang.isString(down) ? [5, 5] : down;
+
+            downObj.simulate('mousedown', {clientX: xy[0], clientY: xy[1]});
+            downObj.simulate('mousemove', {clientX: xy[0], clientY: xy[1] + y});
+            Y.later(ms, null, function () {
+                downObj.simulate('mouseup', {clientX: xy[0], clientY: xy[1] + y});
+            });
+        },
+
+        testScroll = function (test, widget, down, y) {
+            if (Y.UA.phantomjs) {
+                return;
+            }
+            widget.scrollTo(0, 0);
+            doDrag(widget, down, y, dragDelay);
+            test.wait(function () {
+                Y.Assert.areSame(-y, widget.get('scrollY'));
+                widget.scrollTo(0, 0);
+            }, dragDelay + testDelay);
+        };
+
+    testSuite.add(new Y.Test.Case({
+        name: 'Test dragging behavior',
+
+        testDragNoPlugin: function () {
+            testScroll(this, scroll1, [10, 10], -100);
+        },
+
+        testDragPlugin: function () {
+            testScroll(this, scroll2, [10, 10], -100);
+        },
+
+        testDragPluginImg: function () {
+            testScroll(this, scroll2, 'img', -100);
+        }
+    }));
+
+    Y.Test.Runner.add(testSuite);
+    Y.Test.Runner.run();
 });
 </script>
 </html>

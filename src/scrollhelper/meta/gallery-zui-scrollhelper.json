@@ -1,3 +1,7 @@
 {
-    "gallery-zui-scrollhelper": {}
+    "gallery-zui-scrollhelper": {
+        "requires": [
+            "scrollview"
+        ]
+    }
 }
