@@ -3,7 +3,6 @@
 </div>
 
 <h2>Description</h2>
-<hr/>
 This module provides 5 more methods for Attribute:
 <ul>
  <li>revert() : rollback attribute value to previous one</li>
@@ -13,7 +12,6 @@ This module provides 5 more methods for Attribute:
  <li>unsync() : remove the sync binding.</li>
 </ul>
 <h2>Note</h2>
-<hr/>
 <ul>
  <li>do not use toggle() on none boolean value. It works, but the result may changed in future version.</li>
  <li>Now revert() is disabled by default for performance. You can set _doRevert property to true to enable revert() for all properties, or set _revertList as {propertyName: true, ...} hash for specified properties.</li>
@@ -29,7 +27,6 @@ This module provides 5 more methods for Attribute:
  <li>You may use Y.mix(ClassA, ClassB, true, null, 1) to mix on prototype, check document: <a href="http://yuilibrary.com/yui/docs/api/classes/YUI.html#method_mix">http://yuilibrary.com/yui/docs/api/classes/YUI.html#method_mix</a> . I like to use Y.mix(ClassA.prototype, ClassB.prototype, true), it makes code more readable.</li>
 </ul>
 <h2>Known Issue</h2>
-<ul>
  <li>set() will be tracked after Y.zui.Attribute mix into your class, then revert() use tracked value information to work. So, revert() can not get older values before Y.zui.Attribute mixed.</li>
 </ul>
 <h2>Sample Code</h2>
