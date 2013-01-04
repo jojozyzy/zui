@@ -8,7 +8,10 @@
 <script src="../../../build/gallery-zui-attribute/gallery-zui-attribute-debug.js"></script> 
 <script src="../testlib.js"></script> 
 <script>
-YUI({combine: false}).use('test', 'base', 'gallery-zui-attribute', function (Y) {
+YUI({
+    coverage: ['gallery-zui-attribute'],
+    filter: (window.location.search.match(/[?&]filter=([^&]+)/) || [])[1] || 'raw'
+}).use('test', 'base', 'gallery-zui-attribute', function (Y) {
     var myClass = function () {
             myClass.superclass.constructor.apply(this, arguments);
         },
