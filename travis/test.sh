@@ -19,10 +19,8 @@ extra=""
 if [ -n "$TRAVIS" ]; then
     con="-c 8 "
     timeout="-t 500 "
-    echo "Skipping Grover tests for this Node version (not needed)"
-    extra="--cli "
 fi
 
-args="${timeout} ${con} ${extra}"
+args="${timeout}${con}${extra}"
 echo "yogi test ${args}"
 ${yogi} test ${args}
