@@ -26,6 +26,8 @@ Note
     better performance. Now we just use linear search, when user scrollTo last
     items we run into worst case.
 
+*   This plugin only handle gestures, do not handle scrollTo() method.
+
 Known Issue
 -----------
 
