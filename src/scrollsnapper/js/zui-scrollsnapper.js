@@ -33,6 +33,16 @@ ScrollSnapper.ATTRS = {
     },
 
     /**
+     * Dummy attribute to resolve yui3.8.0 scrollView bug
+     *
+     * @attribute axis
+     * @type {Array}
+     */
+    axis: {
+        value: []
+    },
+
+    /**
      * CSS selector for a page inside the scrollview. The scrollview
      * will snap to the closest page.
      *
