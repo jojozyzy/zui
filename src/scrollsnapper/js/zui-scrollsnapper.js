@@ -44,10 +44,12 @@ ScrollSnapper.ATTRS = {
 
     /**
      * CSS selector for a page inside the scrollview. The scrollview
-     * will snap to the closest page.
+     * will snap to the closest page. If selector is null, all direct
+     * children are pages
      *
      * @attribute selector
      * @type {String}
+     * @default null
      */
     selector: {
         value: null
@@ -94,7 +96,7 @@ ScrollSnapper.ATTRS = {
 Y.namespace('zui').ScrollSnapper = Y.extend(ScrollSnapper, Y.Plugin.Base, {
     initializer: function () {
         this._host = this.get('host');
-        this._vertical = this._host._scrollsVertical;
+        this._vertical = this._host._cAxis.y;
         this._snapAttr = this._vertical ? 'offsetTop' : 'offsetLeft';
         this._snapRange = this._vertical ? 'offsetHeight' : 'offsetWidth';
         this._snapSource = this._vertical ? 'scrollY' : 'scrollX';
@@ -153,9 +155,10 @@ Y.namespace('zui').ScrollSnapper = Y.extend(ScrollSnapper, Y.Plugin.Base, {
      *
      * @method snapTo
      * @param page {Number} page index, start from 0
+     * @chainable
      */
     snapTo: function (page) {
-        this.set('index', page);
+        return this.set('index', page);
     },
 
     /**
@@ -165,6 +168,7 @@ Y.namespace('zui').ScrollSnapper = Y.extend(ScrollSnapper, Y.Plugin.Base, {
      * @param page {Number} page index, start from 0
      * @param duration {Number} The number of ms the animation should last
      * @param easing {String} The timing function to use in the animation
+     * @chainable
      */
     scrollTo: function (page, duration, easing) {
         var V = Math.max(Math.floor(page), 0),
@@ -184,36 +188,43 @@ Y.namespace('zui').ScrollSnapper = Y.extend(ScrollSnapper, Y.Plugin.Base, {
         } else {
             this._host.scrollTo(D, null, T, easing);
         }
+
+        return this;
     },
 
     /**
      * Scroll to the next page in the scrollview, with animation
      *
      * @method next
+     * @chainable
      */
     next: function () {
         var index = this.get('index');
         if(index < this.get('total') - 1) {
             this.set('index', index + 1);
         }
+        return this;
     },
 
     /**
      * Scroll to the previous page in the scrollview, with animation
      *
      * @method prev
+     * @chainable
      */
     prev: function () {
         var index = this.get('index');
         if(index > 0) {
             this.set('index', index - 1);
         }
+        return this;
     },
 
     /**
      * Get nearest page index
      *
      * @method snapIndex
+     * @return {Number|Null} nearst page index, return null when error
      */
     snapIndex: function () {
         var A = this._snapAttr,

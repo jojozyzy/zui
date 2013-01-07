@@ -27,12 +27,13 @@ li {width:200px;height:300px;border:2px solid #000;background#f00}
 YUI({
     coverage: ['gallery-zui-scrollsnapper'],
     filter: (window.location.search.match(/[?&]filter=([^&]+)/) || [])[1] || 'raw'
-}).use('test', 'gallery-zui-scrollsnapper', function (Y) {
-    var scroll1 = (new Y.ScrollView({srcNode: 'ul', height: 400, width: 300, render: true})).plug(Y.zui.ScrollSnapper),
+}).use('test', 'node-event-simulate', 'gallery-zui-scrollsnapper', function (Y) {
+    var scroll = (new Y.ScrollView({srcNode: 'ul', height: 400, width: 300, render: true})).plug(Y.zui.ScrollSnapper),
         testSuite = new Y.Test.Suite('ZUI scrollhelper'),
-        flickTime = 50,
+        pageH = Y.one('li').get('offsetHeight'),
         dragTime = 800,
-        testDelay = 500,
+        flickTime = 50,
+        testDelay = 1200,
 
         doDrag = function (widget, y, ms) {
             var node = widget.get('contentBox'),
@@ -46,19 +47,102 @@ YUI({
         },
 
         testScroll = function (test, widget, y, time, diff) {
-            widget.scrollTo(0, 0);
-            doDrag(widget, down, y, dragDelay);
+            var startPage = widget.pages.get('index'),
+                startOffset = widget.get('scrollY');
+            doDrag(widget, y, time);
             test.wait(function () {
-                Y.Assert.areSame(-y, widget.get('scrollY'));
-                widget.scrollTo(0, 0);
-            }, dragDelay + testDelay);
+                Y.Assert.areSame(startPage + diff, widget.pages.get('index'));
+                Y.Assert.areSame(startOffset + diff * pageH, widget.get('scrollY'));
+            }, dragTime + testDelay);
         };
 
     testSuite.add(new Y.Test.Case({
-        name: 'Test drag hehavior',
+        name: 'Test attributes',
 
-        testDragNoPlugin: function () {
-            testScroll(this, scroll1, -100, testDelay, 1);
+        testAxis: function () {
+            Y.Assert.isTrue(Y.Lang.isArray(scroll.pages.get('axis')));
+        },
+
+        testTotal: function () {
+            Y.Assert.areSame(10, scroll.pages.get('total'));
+        },
+
+        testIndex: function () {
+            Y.Assert.areSame(0, scroll.pages.get('index'));
+        }
+    }));
+
+    testSuite.add(new Y.Test.Case({
+        name: 'Test plugin methods',
+
+        testPrev: function () {
+            scroll.pages.prev();
+            Y.Assert.areSame(0, scroll.pages.get('index'));
+            Y.Assert.areSame(0, scroll.get('scrollX'));
+            Y.Assert.areSame(0, scroll.get('scrollY'));
+        },
+
+        testNext: function () {
+            scroll.pages.next();
+            this.wait(function () {
+                Y.Assert.areSame(1, scroll.pages.get('index'));
+                Y.Assert.areSame(0, scroll.get('scrollX'));
+                Y.Assert.areSame(pageH, scroll.get('scrollY'));
+            }, testDelay);
+        },
+
+        testNextNext: function () {
+            scroll.pages.next().next();
+            this.wait(function () {
+                Y.Assert.areSame(3, scroll.pages.get('index'));
+                Y.Assert.areSame(0, scroll.get('scrollX'));
+                Y.Assert.areSame(3 * pageH, scroll.get('scrollY'));
+            }, testDelay);
+        },
+
+        testPrevPrev: function () {
+            scroll.pages.prev().prev();
+            this.wait(function () {
+                Y.Assert.areSame(1, scroll.pages.get('index'));
+                Y.Assert.areSame(0, scroll.get('scrollX'));
+                Y.Assert.areSame(1 * pageH, scroll.get('scrollY'));
+            }, testDelay);
+        }
+    }));
+
+    testSuite.add(new Y.Test.Case({
+        name: 'Test drag hehaviors',
+
+        testDragDownBack: function () {
+            testScroll(this, scroll, -100, dragTime, 0);
+        },
+
+        testDragDownOK: function () {
+            testScroll(this, scroll, -250, dragTime, 1);
+        },
+
+        testFlickDown: function () {
+            testScroll(this, scroll, -50, flickTime, 1);
+        },
+
+        testFlickDownFar: function () {
+            testScroll(this, scroll, -120, flickTime, 2);
+        },
+
+        testDragUpBack: function () {
+            testScroll(this, scroll, 100, dragTime, 0);
+        },
+
+        testDragUpOK: function () {
+            testScroll(this, scroll, 250, dragTime, -1);
+        },
+
+        testFlickUp: function () {
+            testScroll(this, scroll, 50, flickTime, -1);
+        },
+
+        testFlickUpFar: function () {
+            testScroll(this, scroll, 120, flickTime, -2);
         }
     }));
 
