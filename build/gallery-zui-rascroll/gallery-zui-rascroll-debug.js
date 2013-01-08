@@ -1,3 +1,5 @@
+YUI.add('gallery-zui-rascroll', function (Y, NAME) {
+
 /**
  * The RAScrollPlugin help to handle scrollView behaviors.
  * When a Horizontal scrollView is placed inside a Vertical scrollView,
@@ -170,3 +172,6 @@ Y.namespace('zui').RAScroll = Y.extend(RAScrollPlugin, Y.Plugin.Base, {
         }
     }
 });
+
+
+}, '@VERSION@', {"skinnable": false, "requires": ["scrollview"]});

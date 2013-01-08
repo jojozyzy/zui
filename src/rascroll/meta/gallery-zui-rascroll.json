@@ -1,14 +1,8 @@
 {
     "gallery-zui-rascroll": {
-        "supersedes": [
-            ""
-        ],
-        "skinnable": "false",
+        "skinnable": false,
         "requires": [
             "scrollview"
-        ],
-        "optional": [
-            ""
         ]
     }
 }

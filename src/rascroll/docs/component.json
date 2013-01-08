@@ -5,7 +5,5 @@
     "author"     : [ "zordius" ],
     "use"        : [ "gallery-zui-rascroll" ],
 
-    "tags": [ "gallery" ],
-
-    "examples": []
+    "tags": ["scrollview", "multiple scrollviews", "right angel", "zordius"]
 }
