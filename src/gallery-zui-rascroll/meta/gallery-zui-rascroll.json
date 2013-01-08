@@ -1,0 +1,14 @@
+{
+    "gallery-zui-rascroll": {
+        "supersedes": [
+            ""
+        ],
+        "skinnable": "false",
+        "requires": [
+            "scrollview"
+        ],
+        "optional": [
+            ""
+        ]
+    }
+}
