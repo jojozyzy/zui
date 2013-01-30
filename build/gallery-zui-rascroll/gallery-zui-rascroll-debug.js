@@ -107,7 +107,7 @@ Y.namespace('zui').RAScroll = Y.extend(RAScrollPlugin, Y.Plugin.Base, {
         this._start = true;
 
         if (!dragStart) {
-            onlyX = Math.abs(this._host._startClientX - E.clientX) > Math.abs(this._host._startClientY - E.clientY);
+            onlyX = Math.abs(this._host._gesture.startClientX - E.clientX) > Math.abs(this._host._gesture.startClientY - E.clientY);
             dragStart = true;
         }
 
