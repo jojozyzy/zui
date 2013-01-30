@@ -68,7 +68,10 @@ Y.namespace('zui').RAScroll = Y.extend(RAScrollPlugin, Y.Plugin.Base, {
         this._start = false;
 
         if (!this._hori) {
-            this._cnt.setStyle('overflowX', 'hidden');
+            this._cnt.setStyles({
+                overflowX: 'hidden',
+                height: 'auto'
+            });
         }
 
         this._handles.push(new Y.EventHandle([

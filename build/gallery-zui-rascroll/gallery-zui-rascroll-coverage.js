@@ -26,9 +26,9 @@ _yuitest_coverage["build/gallery-zui-rascroll/gallery-zui-rascroll.js"] = {
     path: "build/gallery-zui-rascroll/gallery-zui-rascroll.js",
     code: []
 };
-_yuitest_coverage["build/gallery-zui-rascroll/gallery-zui-rascroll.js"].code=["YUI.add('gallery-zui-rascroll', function (Y, NAME) {","","/**"," * The RAScrollPlugin help to handle scrollView behaviors."," * When a Horizontal scrollView is placed inside a Vertical scrollView,"," * user can do only x or y direction slick."," *"," * @module gallery-zui-rascroll"," */","var dragging = 0,","    dragStart = false,","    onlyX = false,","/**"," * RAScrollPlugin is a ScrollView plugin that adds right angle flick behaviors."," *"," * @class RAScrollPlugin"," * @namespace zui"," * @extends Plugin.Base"," * @constructor"," */","    RAScrollPlugin = function () {","        RAScrollPlugin.superclass.constructor.apply(this, arguments);","    };","","RAScrollPlugin.NAME = 'pluginRAScroll';","RAScrollPlugin.NS = 'zras';","RAScrollPlugin.ATTRS = {","    /**","     * make the scrollView as horizontal or not.","     *","     * @attribute horizontal","     * @default true","     * @type Boolean","     */","    horizontal: {","        value: true,","        lazyAdd: false,","        validator: Y.Lang.isBoolean,","        setter: function (V) {","            this._hori = V;","            return V;","        }","    },","","    /**","     * A boolean decides the right angle behavior should started when other scrollView is also dragged.","     *","     * @attribute cooperation","     * @default false","     * @type Boolean","     */","    cooperation: {","        value: false,","        lazyAdd: false,","        validator: Y.Lang.isBoolean,","        setter: function (V) {","            this._coop = V;","            return V;","        }","    }","};","","Y.namespace('zui').RAScroll = Y.extend(RAScrollPlugin, Y.Plugin.Base, {","    initializer: function () {","        this._host = this.get('host');","        this._node = this._host.get('boundingBox');","        this._cnt = this._host.get('contentBox');","        this._start = false;","","        if (!this._hori) {","            this._cnt.setStyle('overflowX', 'hidden');","        }","","        this._handles.push(new Y.EventHandle([","            this._node.on('gesturemovestart', this.handleGestureMoveStart),","            this._node.on('gesturemove', Y.bind(this.handleGestureMove, this)),","            this._cnt.on('gesturemoveend', Y.bind(this.handleGestureMoveEnd, this), {standAlone: true})","        ]));","","        this.syncScroll();","    },","","    /**","     * internal gesturemovestart event handler","     *","     * @method handleGestureMoveStart","     * @protected","     */","    handleGestureMoveStart: function () {","        dragging++;","    },","","    /**","     * internal gesturemove event handler","     *","     * @method handleGestureMove","     * @protected","     */","    handleGestureMove: function (E) {","        if (this._start) {","            return;","        }","","        this._start = true;","","        if (!dragStart) {","            onlyX = Math.abs(this._host._startClientX - E.clientX) > Math.abs(this._host._startClientY - E.clientY);","            dragStart = true;","        }","","        if (this._coop && dragging < 2) {","            return;","        }","","        if (this._hori ? !onlyX : onlyX) {","            this._host.set('disabled', true);","        } else {","            E.preventDefault();","        }","    },","","    /**","     * internal gesturemoveend event handler","     *","     * @method handleGestureMoveEnd","     * @protected","     */","    handleGestureMoveEnd: function () {","        this._start = false;","        dragStart = false;","        dragging = 0;","","        if (this._hori ? !onlyX : onlyX) {","            // IOS6 setTimeout bug fix","            if (Y.UA.ipad + Y.UA.iphone + Y.UA.ipod >= 6) {","                this._host.set('disabled', false);","            } else {","                // Use later to make multi scrollview more stable when","                // user finger off","                Y.later(1, this._host, this._host.set, ['disabled', false]);","            }","","        }","    },","","    /**","     * sync width or height for vertical scroll or horizontal scroll","     *","     * @method syncScroll","     */","    syncScroll: function () {","        if (this._hori) {","            this._node.set('offsetHeight', this._node.get('scrollHeight'));","        } else {","            this.syncWidth();","        }","    },","","    /**","     * make the scrollView become vertical scrolling","     *","     * @method syncWidth","     */","    syncWidth: function () {","        var c = this._cnt,","            sw = this._node.get('scrollWidth'),","            pw = this._node.get('offsetWidth'),","            cw = c.get('offsetWidth');","","        if (cw && (sw > pw)) {","            c.set('offsetWidth', cw + pw - sw);","        }","    }","});","","","}, '@VERSION@', {\"skinnable\": false, \"requires\": [\"scrollview\"]});"];
-_yuitest_coverage["build/gallery-zui-rascroll/gallery-zui-rascroll.js"].lines = {"1":0,"10":0,"22":0,"25":0,"26":0,"27":0,"40":0,"41":0,"57":0,"58":0,"63":0,"65":0,"66":0,"67":0,"68":0,"70":0,"71":0,"74":0,"80":0,"90":0,"100":0,"101":0,"104":0,"106":0,"107":0,"108":0,"111":0,"112":0,"115":0,"116":0,"118":0,"129":0,"130":0,"131":0,"133":0,"135":0,"136":0,"140":0,"152":0,"153":0,"155":0,"165":0,"170":0,"171":0};
-_yuitest_coverage["build/gallery-zui-rascroll/gallery-zui-rascroll.js"].functions = {"RAScrollPlugin:21":0,"setter:39":0,"setter:56":0,"initializer:64":0,"handleGestureMoveStart:89":0,"handleGestureMove:99":0,"handleGestureMoveEnd:128":0,"syncScroll:151":0,"syncWidth:164":0,"(anonymous 1):1":0};
+_yuitest_coverage["build/gallery-zui-rascroll/gallery-zui-rascroll.js"].code=["YUI.add('gallery-zui-rascroll', function (Y, NAME) {","","/**"," * The RAScrollPlugin help to handle scrollView behaviors."," * When a Horizontal scrollView is placed inside a Vertical scrollView,"," * user can do only x or y direction slick."," *"," * @module gallery-zui-rascroll"," */","var dragging = 0,","    dragStart = false,","    onlyX = false,","/**"," * RAScrollPlugin is a ScrollView plugin that adds right angle flick behaviors."," *"," * @class RAScrollPlugin"," * @namespace zui"," * @extends Plugin.Base"," * @constructor"," */","    RAScrollPlugin = function () {","        RAScrollPlugin.superclass.constructor.apply(this, arguments);","    };","","RAScrollPlugin.NAME = 'pluginRAScroll';","RAScrollPlugin.NS = 'zras';","RAScrollPlugin.ATTRS = {","    /**","     * make the scrollView as horizontal or not.","     *","     * @attribute horizontal","     * @default true","     * @type Boolean","     */","    horizontal: {","        value: true,","        lazyAdd: false,","        validator: Y.Lang.isBoolean,","        setter: function (V) {","            this._hori = V;","            return V;","        }","    },","","    /**","     * A boolean decides the right angle behavior should started when other scrollView is also dragged.","     *","     * @attribute cooperation","     * @default false","     * @type Boolean","     */","    cooperation: {","        value: false,","        lazyAdd: false,","        validator: Y.Lang.isBoolean,","        setter: function (V) {","            this._coop = V;","            return V;","        }","    }","};","","Y.namespace('zui').RAScroll = Y.extend(RAScrollPlugin, Y.Plugin.Base, {","    initializer: function () {","        this._host = this.get('host');","        this._node = this._host.get('boundingBox');","        this._cnt = this._host.get('contentBox');","        this._start = false;","","        if (!this._hori) {","            this._cnt.setStyles({","                overflowX: 'hidden',","                height: 'auto'","            });","        }","","        this._handles.push(new Y.EventHandle([","            this._node.on('gesturemovestart', this.handleGestureMoveStart),","            this._node.on('gesturemove', Y.bind(this.handleGestureMove, this)),","            this._cnt.on('gesturemoveend', Y.bind(this.handleGestureMoveEnd, this), {standAlone: true})","        ]));","","        this.syncScroll();","    },","","    /**","     * internal gesturemovestart event handler","     *","     * @method handleGestureMoveStart","     * @protected","     */","    handleGestureMoveStart: function () {","        dragging++;","    },","","    /**","     * internal gesturemove event handler","     *","     * @method handleGestureMove","     * @protected","     */","    handleGestureMove: function (E) {","        if (this._start) {","            return;","        }","","        this._start = true;","","        if (!dragStart) {","            onlyX = Math.abs(this._host._startClientX - E.clientX) > Math.abs(this._host._startClientY - E.clientY);","            dragStart = true;","        }","","        if (this._coop && dragging < 2) {","            return;","        }","","        if (this._hori ? !onlyX : onlyX) {","            this._host.set('disabled', true);","        } else {","            E.preventDefault();","        }","    },","","    /**","     * internal gesturemoveend event handler","     *","     * @method handleGestureMoveEnd","     * @protected","     */","    handleGestureMoveEnd: function () {","        this._start = false;","        dragStart = false;","        dragging = 0;","","        if (this._hori ? !onlyX : onlyX) {","            // IOS6 setTimeout bug fix","            if (Y.UA.ipad + Y.UA.iphone + Y.UA.ipod >= 6) {","                this._host.set('disabled', false);","            } else {","                // Use later to make multi scrollview more stable when","                // user finger off","                Y.later(1, this._host, this._host.set, ['disabled', false]);","            }","","        }","    },","","    /**","     * sync width or height for vertical scroll or horizontal scroll","     *","     * @method syncScroll","     */","    syncScroll: function () {","        if (this._hori) {","            this._node.set('offsetHeight', this._node.get('scrollHeight'));","        } else {","            this.syncWidth();","        }","    },","","    /**","     * make the scrollView become vertical scrolling","     *","     * @method syncWidth","     */","    syncWidth: function () {","        var c = this._cnt,","            sw = this._node.get('scrollWidth'),","            pw = this._node.get('offsetWidth'),","            cw = c.get('offsetWidth');","","        if (cw && (sw > pw)) {","            c.set('offsetWidth', cw + pw - sw);","        }","    }","});","","","}, '@VERSION@', {\"skinnable\": false, \"requires\": [\"scrollview\"]});"];
+_yuitest_coverage["build/gallery-zui-rascroll/gallery-zui-rascroll.js"].lines = {"1":0,"10":0,"22":0,"25":0,"26":0,"27":0,"40":0,"41":0,"57":0,"58":0,"63":0,"65":0,"66":0,"67":0,"68":0,"70":0,"71":0,"77":0,"83":0,"93":0,"103":0,"104":0,"107":0,"109":0,"110":0,"111":0,"114":0,"115":0,"118":0,"119":0,"121":0,"132":0,"133":0,"134":0,"136":0,"138":0,"139":0,"143":0,"155":0,"156":0,"158":0,"168":0,"173":0,"174":0};
+_yuitest_coverage["build/gallery-zui-rascroll/gallery-zui-rascroll.js"].functions = {"RAScrollPlugin:21":0,"setter:39":0,"setter:56":0,"initializer:64":0,"handleGestureMoveStart:92":0,"handleGestureMove:102":0,"handleGestureMoveEnd:131":0,"syncScroll:154":0,"syncWidth:167":0,"(anonymous 1):1":0};
 _yuitest_coverage["build/gallery-zui-rascroll/gallery-zui-rascroll.js"].coveredLines = 44;
 _yuitest_coverage["build/gallery-zui-rascroll/gallery-zui-rascroll.js"].coveredFunctions = 10;
 _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 1);
@@ -123,17 +123,20 @@ this._start = false;
         _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 70);
 if (!this._hori) {
             _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 71);
-this._cnt.setStyle('overflowX', 'hidden');
+this._cnt.setStyles({
+                overflowX: 'hidden',
+                height: 'auto'
+            });
         }
 
-        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 74);
+        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 77);
 this._handles.push(new Y.EventHandle([
             this._node.on('gesturemovestart', this.handleGestureMoveStart),
             this._node.on('gesturemove', Y.bind(this.handleGestureMove, this)),
             this._cnt.on('gesturemoveend', Y.bind(this.handleGestureMoveEnd, this), {standAlone: true})
         ]));
 
-        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 80);
+        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 83);
 this.syncScroll();
     },
 
@@ -144,8 +147,8 @@ this.syncScroll();
      * @protected
      */
     handleGestureMoveStart: function () {
-        _yuitest_coverfunc("build/gallery-zui-rascroll/gallery-zui-rascroll.js", "handleGestureMoveStart", 89);
-_yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 90);
+        _yuitest_coverfunc("build/gallery-zui-rascroll/gallery-zui-rascroll.js", "handleGestureMoveStart", 92);
+_yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 93);
 dragging++;
     },
 
@@ -156,36 +159,36 @@ dragging++;
      * @protected
      */
     handleGestureMove: function (E) {
-        _yuitest_coverfunc("build/gallery-zui-rascroll/gallery-zui-rascroll.js", "handleGestureMove", 99);
-_yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 100);
+        _yuitest_coverfunc("build/gallery-zui-rascroll/gallery-zui-rascroll.js", "handleGestureMove", 102);
+_yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 103);
 if (this._start) {
-            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 101);
+            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 104);
 return;
         }
 
-        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 104);
+        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 107);
 this._start = true;
 
-        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 106);
+        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 109);
 if (!dragStart) {
-            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 107);
+            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 110);
 onlyX = Math.abs(this._host._startClientX - E.clientX) > Math.abs(this._host._startClientY - E.clientY);
-            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 108);
+            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 111);
 dragStart = true;
         }
 
-        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 111);
+        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 114);
 if (this._coop && dragging < 2) {
-            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 112);
+            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 115);
 return;
         }
 
-        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 115);
+        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 118);
 if (this._hori ? !onlyX : onlyX) {
-            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 116);
+            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 119);
 this._host.set('disabled', true);
         } else {
-            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 118);
+            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 121);
 E.preventDefault();
         }
     },
@@ -197,25 +200,25 @@ E.preventDefault();
      * @protected
      */
     handleGestureMoveEnd: function () {
-        _yuitest_coverfunc("build/gallery-zui-rascroll/gallery-zui-rascroll.js", "handleGestureMoveEnd", 128);
-_yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 129);
+        _yuitest_coverfunc("build/gallery-zui-rascroll/gallery-zui-rascroll.js", "handleGestureMoveEnd", 131);
+_yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 132);
 this._start = false;
-        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 130);
+        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 133);
 dragStart = false;
-        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 131);
+        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 134);
 dragging = 0;
 
-        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 133);
+        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 136);
 if (this._hori ? !onlyX : onlyX) {
             // IOS6 setTimeout bug fix
-            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 135);
+            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 138);
 if (Y.UA.ipad + Y.UA.iphone + Y.UA.ipod >= 6) {
-                _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 136);
+                _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 139);
 this._host.set('disabled', false);
             } else {
                 // Use later to make multi scrollview more stable when
                 // user finger off
-                _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 140);
+                _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 143);
 Y.later(1, this._host, this._host.set, ['disabled', false]);
             }
 
@@ -228,13 +231,13 @@ Y.later(1, this._host, this._host.set, ['disabled', false]);
      * @method syncScroll
      */
     syncScroll: function () {
-        _yuitest_coverfunc("build/gallery-zui-rascroll/gallery-zui-rascroll.js", "syncScroll", 151);
-_yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 152);
+        _yuitest_coverfunc("build/gallery-zui-rascroll/gallery-zui-rascroll.js", "syncScroll", 154);
+_yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 155);
 if (this._hori) {
-            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 153);
+            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 156);
 this._node.set('offsetHeight', this._node.get('scrollHeight'));
         } else {
-            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 155);
+            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 158);
 this.syncWidth();
         }
     },
@@ -245,16 +248,16 @@ this.syncWidth();
      * @method syncWidth
      */
     syncWidth: function () {
-        _yuitest_coverfunc("build/gallery-zui-rascroll/gallery-zui-rascroll.js", "syncWidth", 164);
-_yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 165);
+        _yuitest_coverfunc("build/gallery-zui-rascroll/gallery-zui-rascroll.js", "syncWidth", 167);
+_yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 168);
 var c = this._cnt,
             sw = this._node.get('scrollWidth'),
             pw = this._node.get('offsetWidth'),
             cw = c.get('offsetWidth');
 
-        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 170);
+        _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 173);
 if (cw && (sw > pw)) {
-            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 171);
+            _yuitest_coverline("build/gallery-zui-rascroll/gallery-zui-rascroll.js", 174);
 c.set('offsetWidth', cw + pw - sw);
         }
     }
