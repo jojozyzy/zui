@@ -12,7 +12,7 @@ wait
 if [ -n "$TRAVIS" ]; then
     echo "Installing Yogi"
     npm -g install yogi -loglevel silent
-    if [ "1" -eq "GETYUI" ]; then
+    if [ "1" -eq "$GETYUI" ]; then
         echo "get last yui3 files for testing";
         wget http://yui.zenfs.com/releases/yui3/$YUIV.zip
         unzip $YUIV.zip

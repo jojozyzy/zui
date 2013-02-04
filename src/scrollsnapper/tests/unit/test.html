@@ -28,11 +28,12 @@ YUI({
     filter: (window.location.search.match(/[?&]filter=([^&]+)/) || [])[1] || 'raw'
 }).use('test', 'node-event-simulate', 'gallery-zui-scrollsnapper', function (Y) {
     var scroll = (new Y.ScrollView({srcNode: 'ul', height: 400, width: 300, render: true})).plug(Y.zui.ScrollSnapper),
-        testSuite = new Y.Test.Suite('ZUI scrollhelper'),
+        testSuite = new Y.Test.Suite('ZUI scrollsnapper'),
         pageH = Y.one('li').get('offsetHeight'),
         dragTime = 800,
         flickTime = 50,
         testDelay = 1500,
+        skip_phantomjs = Y.UA.phantomjs,
 
         doDrag = function (y, ms) {
             var node = scroll.get('contentBox'),
@@ -60,9 +61,6 @@ YUI({
             var startPage,
                 startOffset;
 
-            if (Y.UA.phantomjs) {
-                return;
-            }
             scroll.pages.set('index', 0);
             scroll.pages.set('index', 5);
             startPage = scroll.pages.get('index');
@@ -148,6 +146,19 @@ YUI({
 
     testSuite.add(new Y.Test.Case({
         name: 'Test drag hehaviors',
+
+        _should: {
+            ignore: {
+                 testDragDownBack: skip_phantomjs,
+                 testDragDownOK: skip_phantomjs,
+                 testFlickDown: skip_phantomjs,
+                 testFlickDownFar: skip_phantomjs,
+                 testDragUpBack: skip_phantomjs,
+                 testDragUpOK: skip_phantomjs,
+                 testFlickUp: skip_phantomjs,
+                 testFlickUpFar: skip_phantomjs
+            }
+        },
 
         testDragDownBack: function () {
             testGesture(this, -100, dragTime, 0);
