@@ -9,4 +9,4 @@ branches:
 before_script:
     - ./travis/before.sh
 script:
-    - ./travis/test.sh
+    - ./travis/test.sh --coverage
