@@ -1,6 +1,6 @@
 #!/bin/bash
 YUIV=yui_3.8.1
-GETYUI=0
+GETYUI=1
 echo "Before Script: `pwd`"
 
 cd "$(dirname "$0")"
