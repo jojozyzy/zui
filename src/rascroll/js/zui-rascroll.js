@@ -65,13 +65,6 @@ Y.namespace('zui').RAScroll = Y.extend(RAScrollPlugin, Y.Plugin.Base, {
         this._cnt = this._host.get('contentBox');
         this._start = false;
 
-        if (!this._hori) {
-            this._cnt.setStyles({
-                overflowX: 'hidden',
-                height: 'auto'
-            });
-        }
-
         this._handles.push(new Y.EventHandle([
             this._node.on('gesturemovestart', this.handleGestureMoveStart),
             this._node.on('gesturemove', Y.bind(this.handleGestureMove, this)),
