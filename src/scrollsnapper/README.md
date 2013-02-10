@@ -37,6 +37,8 @@ Known Issue
 *   If you have a lots of pages in the scrollView, the 'snapTo' calculation may take
     longer time. You should do performance test for this case.
 
+*   plug into a scrollView before it rendered will cause error.
+
 Code Sample
 -----------
 
