@@ -39,6 +39,10 @@ Known Issue
 
 *   plug into a scrollView before it rendered will cause error.
 
+*   gallery-2012.11.07-21-32 or older version can not cowork with YUI 3.7.0+
+
+*   gallery-2013.02.07-15-27 or newer version can not cowork with YUI 3.6.0-
+
 Code Sample
 -----------
 
