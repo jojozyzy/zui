@@ -12,6 +12,8 @@
         Transition = Y.Transition,
         NATIVE_TRANSITIONS = Transition.useNative,
         TRANSFORM = "transform",
+        SCROLL_X = "scrollX",
+        SCROLL_Y = "scrollY",
         PX = "px",
         CLOSE = ")",
         PX_CLOSE = PX + CLOSE;
