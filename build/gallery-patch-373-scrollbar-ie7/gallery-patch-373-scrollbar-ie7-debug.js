@@ -14,6 +14,8 @@ YUI.add('gallery-patch-373-scrollbar-ie7', function (Y, NAME) {
         Transition = Y.Transition,
         NATIVE_TRANSITIONS = Transition.useNative,
         TRANSFORM = "transform",
+        SCROLL_X = "scrollX",
+        SCROLL_Y = "scrollY",
         PX = "px",
         CLOSE = ")",
         PX_CLOSE = PX + CLOSE;
