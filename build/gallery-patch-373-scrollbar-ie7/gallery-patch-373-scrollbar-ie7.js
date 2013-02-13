@@ -1,5 +1,23 @@
 YUI.add('gallery-patch-373-scrollbar-ie7', function (Y, NAME) {
 
+    var CHILD_CACHE = "childCache",
+        HORIZ_CACHE = "_sbh",
+        VERT_CACHE = "_sbv",
+        TRANSLATE_X = "translateX(",
+        TRANSLATE_Y = "translateY(",
+        SCALE_X = "scaleX(",
+        SCALE_Y = "scaleY(",
+        WIDTH = "width",
+        HEIGHT = "height",
+        TOP = "top",
+        LEFT = "left",
+        Transition = Y.Transition,
+        NATIVE_TRANSITIONS = Transition.useNative,
+        TRANSFORM = "transform",
+        PX = "px",
+        CLOSE = ")",
+        PX_CLOSE = PX + CLOSE;
+
     Y.Plugin.ScrollViewScrollbars.prototype._updateBar = function(scrollbar, current, duration, horiz) {
 
         var host = this._host,
