@@ -107,11 +107,8 @@ Y.namespace('zui').RAScroll = Y.extend(RAScrollPlugin, Y.Plugin.Base, {
         }
 
         if (this._hori ? !onlyX : onlyX) {
-Y.one('body').toggleClass('h', onlyX);
-Y.one('body').toggleClass('v', !onlyX);
             this._host.set('disabled', true);
         } else {
-Y.one('body').toggleClass('l');
             E.preventDefault();
         }
     },
