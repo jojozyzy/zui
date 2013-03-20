@@ -1,5 +1,5 @@
 #!/bin/bash
-YUIV=yui_3.8.1
+YUIV=yui_3.9.0
 GETYUI=1
 echo "Before Script: `pwd`"
 
