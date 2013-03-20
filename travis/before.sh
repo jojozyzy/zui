@@ -11,7 +11,7 @@ wait
 
 if [ -n "$TRAVIS" ]; then
     echo "Installing Yogi"
-    npm -g install yogi@0.0.75 -loglevel silent
+    npm -g install yogi@0.0.68 -loglevel silent
     cd src
     echo "building entire library with yogi";
     yogi build --no-lint --cache
