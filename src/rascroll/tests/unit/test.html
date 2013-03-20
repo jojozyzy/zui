@@ -8,6 +8,11 @@
  <meta name="format-detection" content="telephone=no">
  <title>Test ZUI RAScroll</title>
 </head>
+<style>
+body.h {background:#f00}
+body.v {background:#0f0}
+body.l {color:#00f}
+</style>
 <body class="yui3-skin-sam">
 <div id="scroll1">
  <div>
@@ -110,15 +115,16 @@
  </div>
 </div>
 </body>
-<script src="/build/yui/yui-debug.js"></script>
+<script src="http://yui.yahooapis.com/3.9.0/build/yui/yui-min.js"></script>
+<script src="/build/gallery-zui-rascroll/gallery-zui-rascroll.js"></script>
 <script>
 YUI({
     coverage: ['gallery-zui-rascroll'],
     filter: (window.location.search.match(/[?&]filter=([^&]+)/) || [])[1] || 'raw'
 }).use('test', 'node-event-simulate', 'gallery-zui-rascroll', function (Y) {
-    var scroll3 = new Y.ScrollView({srcNode: '#scroll3', width:300, render: true}),
-        scroll2 = new Y.ScrollView({srcNode: '#scroll2', width:300, render: true}),
-        scroll1 = new Y.ScrollView({srcNode: '#scroll1', height: 400, width: 300, render: true}),
+    var scroll3 = new Y.ScrollView({srcNode: '#scroll3', width:300, render: true, axis: 'x'}),
+        scroll2 = new Y.ScrollView({srcNode: '#scroll2', width:300, render: true, axis: 'x'}),
+        scroll1 = new Y.ScrollView({srcNode: '#scroll1', height: 400, width: 300, render: true, axis: 'y'}),
         testSuite = new Y.Test.Suite('ZUI rascroll'),
         dragTime = 100,
         testDelay = 500,
